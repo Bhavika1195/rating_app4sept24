@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>Rating App</title>
+		<style>
+			*{font-size:60px;}
+			body{background-color:linen;}
+		</style>
+	</head>
+	<body>
+	<center>
+	<h1>Rating App</h1>
+	<form onsubmit="check()">
+		<input type="number" id="num" placeholder="enter rating between 1 to 5"/>
+		
+		<input type="submit" value="M1"/>
+		<input type="submit" value="M2"/>
+		<input type="submit" value="M3"/>
+	</form>
+		<h2 id="msg"/>
+	
+	<script>
+		function check()
+		{
+			event.preventDefault();
+			let num=document.getElementById("num");
+			let msg=document.getElementById("msg");
+			let action=document.activeElement.value;
+			
+			if(num.value==="")
+			{
+			alert("please enter rating");
+			msg.innerHTML="";
+			num.focus();
+			return;
+			}
+			
+			let r=parseInt(num.value);
+
+			if(r>5||r<1)
+			{
+			alert("please enter rating between 1 to 5");
+			msg.innerHTML="";
+			num.focus();
+			return;
+			}
+			
+			let ans="";
+			if(action==="M1")
+			{
+			ans=((r==4)||(r==5))?"excellent":((r==2)||(r==3))?"ok":"poor";
+			msg.innerHTML="ans1="+ans;
+			}
+			
+			else if(action==="M2")
+			{		
+			if((r===4)||(r===5))
+				ans="excellent";
+			else if((r===2)||(r===3))
+				ans="ok";
+			else
+				ans="poor";
+			msg.innerHTML="ans2="+ans;
+			}
+
+			else if(action==="M3")
+			{
+				switch(r)
+				{
+				case 5:ans="excellent"; break;
+				case 4:ans="excellent"; break;
+				case 3:ans="ok"; break;
+				case 2:ans="ok"; break;
+				case 1:ans="poor"; break;
+				}
+		
+	msg.innerHTML="ans3="+ans;
+			}
+		}
+		
+	</script>
+	</center>
+	</body>	
+</html>
